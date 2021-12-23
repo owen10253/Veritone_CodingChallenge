@@ -1,8 +1,8 @@
 var Node = require('./node.js');
 
 class BinarySearchTree {
-	constructor(node) {
-        this.root = node||null;
+	constructor(node = null) {
+        this.root = node;
     }
 
     // function to implement
@@ -50,11 +50,9 @@ class BinarySearchTree {
     // O(T): O(N) -> N is number of Node. This operation require to go through all Nodes
     // O(S): O(N) -> Worst cast need to hold all node in queue
     deepest_node() {
-        var output = {nodes:null, level: -1}
-
         // base case
         if (this.root === null) {
-            return output;
+            return { nodes: null, level: -1 };
         }
 
         // create queue to store nodes and initialize with root and level. 'x' to separate level
@@ -64,7 +62,6 @@ class BinarySearchTree {
         
 
         while (queue.length > 1) {
-            
             var tuple = queue.shift();
 
             if (tuple === "x") {
@@ -73,13 +70,14 @@ class BinarySearchTree {
                 levelNodes = [];
                 continue;
             }
-            //console.log(node, 'AAAAAA')
+
+            // Take each node from queue
             var node = tuple[0];
             var currLevel = tuple[1];
 
             levelNodes.push(node.data)
             
-
+            // Add Nodes to the queue
             if (node.left) {
                 queue.push([node.left, currLevel + 1]);
             }
@@ -88,11 +86,8 @@ class BinarySearchTree {
                 queue.push([node.right, currLevel + 1]);
             }
         }
-
-        output.nodes = levelNodes;
-        output.level = currLevel;
-
-        return output;
+        
+        return {nodes: levelNodes, level: currLevel};
     }
 }
 
