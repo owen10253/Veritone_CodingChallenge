@@ -4,3 +4,6 @@
 
 # Visual Studio File
 /.vs
+
+# NPM Package
+node_modules/
