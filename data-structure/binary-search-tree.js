@@ -33,7 +33,7 @@ class BinarySearchTree {
             } else {
                 this.insertNode(node.left, newNode);
             }
-        } else if (newNode.data > node.data) {
+        } else {
             if (node.right === null) {
                 node.right = newNode;
             } else {
@@ -59,7 +59,7 @@ class BinarySearchTree {
         var queue = [[this.root, 0], "x"];
         var levelNodes = [];
 
-        
+        // return the depth of the tree. w/o storing the node? 
 
         while (queue.length > 1) {
             var tuple = queue.shift();
@@ -89,6 +89,44 @@ class BinarySearchTree {
         
         return {nodes: levelNodes, level: currLevel};
     }
+
+    /*
+    depth() {
+        // depth of the tree. 
+        // depth-first search 
+
+        // recursion 
+        var max = -1;
+        // if left is not empty
+        if (this.root === null ) {
+            return -1;
+        }
+
+        var helper = (node) => {
+            if (!node) {
+                return -1
+            }
+            
+            return Math.max(helper(node.left),helper(node.right)) + 1;
+        }
+
+        return helper(this.root, 0)
+    }*/
+
+    // two function 
+    // first? return first node and depth? 
+    // max? given a node /// 
+
+    // return the first node. 
+    first () {
+        // return 
+
+        if (this.root)
+    }
 }
+
+  2
+1   3
+
 
 module.exports = BinarySearchTree;
